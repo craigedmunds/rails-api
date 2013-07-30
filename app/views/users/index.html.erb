@@ -1,0 +1,17 @@
+<h1>Listing users</h1>
+ 
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Age</th>
+    <th>Show</th>
+  </tr>
+ 
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.first_name %></td>
+      <td><%= user.age %></td>
+      <td><%= link_to 'Show', user %></td>
+    </tr>
+  <% end %>
+</table>
