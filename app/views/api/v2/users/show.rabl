@@ -1,4 +1,4 @@
-# app/views/users/show.rabl
+# app/views/api/v2/users/show.rabl
 object false
 
 child :status do
@@ -9,6 +9,6 @@ end
 child(@user) {
  
 	# Reuse the show template definition
-	extends "users/user"
+	extends "api/v1/users/show"
 
 }

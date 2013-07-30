@@ -1,5 +1,18 @@
 RailsApi::Application.routes.draw do
-  resources :users, :posts
+  #get 'users/description.:format' => 'base#description'
+  #root :to => 'users#index'
+  
+  namespace :api, defaults: { format: 'json' } do
+    namespace :v1 do
+      resources :posts, :users
+    end
+    namespace :v2 do
+      resources :posts, :users
+    end
+  end
+
+  resources :posts, :users
+
   
   #get "users/show"
 

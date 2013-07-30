@@ -4,6 +4,10 @@ gem 'rails', '3.2.13'
 gem 'jquery-rails'
 gem 'rabl'
 
+#gem 'nokogiri'
+#gem 'wadl_generator'
+#gem 'wadlgen', :git => 'git://github.com/austvik/wadlgen.git'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

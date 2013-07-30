@@ -1,6 +1,5 @@
-# app/views/users/index.rabl
+# app/views/api/v2/users/index.rabl
 object false
-
 
 child :status do
 	#node(:some_count) { |m| @users.count }
@@ -12,7 +11,7 @@ end
 child(@users) {
  
 	# Reuse the show template definition
-	extends "users/user"
+	extends "api/v1/users/show"
 	 
 	# Let's add an "id" resource for the index action
 	attributes :id

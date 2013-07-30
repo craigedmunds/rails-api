@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   #before_filter :oauth_required
   
-  respond_to :html, :json, :xml
+  respond_to :html
 
   def index
-	  @users = User.all
+    @users = User.all
     @status_code = 0
     @status_desc = "Ok."
 	end
@@ -24,5 +24,5 @@ class UsersController < ApplicationController
   	@user.save
   	redirect_to @user
 	end
- 
+  
 end
