@@ -1,6 +1,26 @@
 RailsApi::Application.routes.draw do
+  
+  match '/oauth/test_request',  :to => 'oauth#test_request',  :as => :test_request
+
+  match '/oauth/token',         :to => 'oauth#token',         :as => :token
+
+  match '/oauth/access_token',  :to => 'oauth#access_token',  :as => :access_token
+
+  match '/oauth/request_token', :to => 'oauth#request_token', :as => :request_token
+
+  match '/oauth/authorize',     :to => 'oauth#authorize',     :as => :authorize
+
+  match '/oauth',               :to => 'oauth#index',         :as => :oauth
+
+  devise_for :users
+
   #get 'users/description.:format' => 'base#description'
-  #root :to => 'users#index'
+  root :to => 'pages#home'
+  get 'about' => 'pages#about'
+
+  namespace :admin do
+    resources :oauth_clients
+  end
   
   namespace :api, defaults: { format: 'json' } do
     namespace :v1 do
@@ -11,7 +31,7 @@ RailsApi::Application.routes.draw do
     end
   end
 
-  resources :posts, :users
+  #resources :posts, :users
 
   
   #get "users/show"
