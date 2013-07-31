@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'oauth/rack/oauth_filter'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
@@ -61,5 +62,7 @@ module RailsApi
 
     # Required for devise on heroku
     config.assets.initialize_on_precompile = false
+
+    config.middleware.use OAuth::Rack::OAuthFilter
   end
 end

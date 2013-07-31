@@ -19,7 +19,11 @@ RailsApi::Application.routes.draw do
   get 'about' => 'pages#about'
 
   namespace :admin do
+
+    root :to => "oauth_clients#index"
+
     resources :oauth_clients
+
   end
   
   namespace :api, defaults: { format: 'json' } do

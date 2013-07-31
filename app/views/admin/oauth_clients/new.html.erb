@@ -1,0 +1,10 @@
+<h1>Register a new application</h1>
+<%= simple_form_for :client_application, :url => { :action => :create }, html: { class: 'form-horizontal'} do |f| %>
+   <%= render :partial => "form", :locals => { :f => f } %>
+   
+   <div class="form-actions">
+    <%= f.submit "Register", class: "btn btn-primary"%>
+  </div>
+<% end %>
+
+<%= link_to 'Back', admin_oauth_clients_path %>

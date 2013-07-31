@@ -1,0 +1,7 @@
+<h1>Edit your application</h1>
+<%= form_for :client_application, @client_application, :url => admin_oauth_client_path(@client_application), :html => {:method => :put}  do |f| %>
+       <%= render :partial => "form", :locals => { :f => f } %>
+       <%= submit_tag "Edit" %>
+<% end %>
+<%= link_to 'Show', admin_oauth_client_path(@client_application) %> |
+<%= link_to 'Back', admin_oauth_clients_path %>

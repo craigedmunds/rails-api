@@ -4,10 +4,14 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
+	attr_accessible :age, :first_name, :last_name
+
 	has_many :posts
-  attr_accessible :age, :first_name, :last_name
+  
+  has_many :client_applications
+	has_many :tokens, :class_name=>"Oauth2Token",:order=>"authorized_at desc",:include=>[:client_application]
 end
