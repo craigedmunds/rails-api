@@ -6,6 +6,8 @@ gem 'rabl'
 gem 'devise'
 gem 'simple_form'
 gem 'oauth-plugin'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 #gem 'nokogiri'
 #gem 'wadl_generator'

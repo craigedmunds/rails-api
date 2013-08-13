@@ -18,6 +18,7 @@ class ClientApplication < ActiveRecord::Base
   attr_accessible :name, :url, :support_url, :callback_url
 
   def self.find_token(token_key)
+    logger.info "ClientApplication find_token token_key : " + token_key.inspect
     token = OauthToken.find_by_token(token_key, :include => :client_application)
     if token && token.authorized?
       token
@@ -28,11 +29,20 @@ class ClientApplication < ActiveRecord::Base
 
   def self.verify_request(request, options = {}, &block)
     begin
+      
+      logger.info "ClientApplication verify_request request : " + request.inspect
+      logger.info "ClientApplication verify_request options : " + options.inspect
+
       signature = OAuth::Signature.build(request, options, &block)
       return false unless OauthNonce.remember(signature.request.nonce, signature.request.timestamp)
+      
+
+      logger.info "ClientApplication verify_request signature : " + signature.inspect
+
       value = signature.verify
       value
     rescue OAuth::Signature::UnknownSignatureMethod => e
+      logger.info "ClientApplication verify_request UnknownSignatureMethod exception : " + e.inspect
       false
     end
   end

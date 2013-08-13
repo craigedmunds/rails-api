@@ -12,7 +12,9 @@ RailsApi::Application.routes.draw do
 
   match '/oauth',               :to => 'oauth#index',         :as => :oauth
 
-  devise_for :users
+  #match '/users/auth/facebook' => 'users/omniauth_callbacks#passthru'
+
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   #get 'users/description.:format' => 'base#description'
   root :to => 'pages#home'
