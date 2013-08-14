@@ -2,7 +2,7 @@ module Api
   module V2
 
     class UsersController < UsersController
-      before_filter :oauth_required
+      #before_filter :oauth_required
 
       logger.info "Inside Api v2 UsersController"
       logger.info "Current time : " + Time.new.inspect
